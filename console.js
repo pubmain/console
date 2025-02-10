@@ -19,6 +19,13 @@ const server = Bun.serve({
 				case "/error":
 					console.error("[ERROR]", text)
 					return new Response("Logged error", {status: 200})
+				case "/clear":
+					console.clear()
+					console.log("[INTERNAL] Console cleared")
+					return new Response("Cleared console", {status: 200})
+				case "/":
+					console.log(text)
+					return new Response("Printed", {status: 200})
 				default:
 					return new Response("Not Found", {status: 404})
 			}
